@@ -1,0 +1,13 @@
+services:
+  langchain:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    tty: true
+    ports:
+      - 8000:8000
+    volumes:
+      - ./:/app
+    env_file:
+      - ./../.env
+    command: bash -c 'poetry run langchain-server'
