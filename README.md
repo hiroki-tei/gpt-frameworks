@@ -1,2 +1,5 @@
-# gpt-clients
-practice using gpt clients 
+# gpt-frameworks
+
+this repository is for playing with gpt frameworks such as
+- langchain
+- AutoGen

@@ -1,0 +1,10 @@
+[tool.poetry]
+name = "autogen"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+common-lib = { path = "../common-lib", develop=true }
+python = "^3.11"
+pyautogen = "0.1.14"
