@@ -1,2 +1,5 @@
 .tool-versions
 .ipynb_checkpoints
+
+*.egg-info/
+

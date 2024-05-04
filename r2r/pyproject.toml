@@ -1,0 +1,11 @@
+[tool.poetry]
+name = "r2r-project"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+##packages = [{ include = "common", from = "common-lib"}]
+
+[tool.poetry.dependencies]
+common-lib = { path = "../common-lib", develop=true }
+python = "^3.11,<3.13"
+r2r = {extras = ["all"], version = "^0.1.35"}
