@@ -1,2 +1,6 @@
 .tool-versions
 .ipynb_checkpoints
+
+*.egg-info/
+.env
+__pycache__

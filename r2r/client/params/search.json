@@ -1,0 +1,26 @@
+{
+  "message": "君の名は?",
+  "limit": 10,
+  "filters": {},
+  "settings": {
+    "embedding_settings": {
+      "do_chunking": true,
+      "do_upsert": true
+    },
+    "ingestion_settings": {},
+    "rag_settings": {}
+  },
+  "generation_config": {
+    "temperature": 0.1,
+    "top_p": 1,
+    "top_k": 100,
+    "max_tokens_to_sample": 1024,
+    "model": "gpt-4-0125-preview",
+    "stream": false,
+    "skip_special_tokens": false,
+    "num_beams": 1,
+    "do_sample": true,
+    "add_generation_kwargs": {},
+    "generate_with_chat": false
+  }
+}
