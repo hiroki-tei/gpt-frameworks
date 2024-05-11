@@ -9,3 +9,4 @@ package-mode = false
 common-lib = { path = "../common-lib", develop=true }
 python = "^3.12"
 llama-index = "^0.10.36"
+llama-index-readers-notion = "^0.1.6"
