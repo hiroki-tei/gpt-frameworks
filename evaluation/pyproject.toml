@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "evaluation"
+version = "0.1.0"
+description = ""
+authors = ["Hiroki Tei <hiroki.tei@apol.co.jp>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+common-lib = { path = "../common-lib", develop=true }
+python = "^3.12"
+promptlayer = "^1.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
