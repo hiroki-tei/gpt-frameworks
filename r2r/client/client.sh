@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FILE_PATH=/path/to/file.pdf
+FILE_PATH=../../raw_data/documents/interest/mbti/INTP.txt
 
 function upload() {
   curl -X POST "http://localhost:8000/upload_and_process_file/" \
