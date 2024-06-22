@@ -8,4 +8,4 @@ package-mode = false
 [tool.poetry.dependencies]
 common-lib = { path = "../common-lib", develop=true }
 python = "^3.11,<3.13"
-chainlit = "^1.1.202"
+chainlit = "^1.1.304"
