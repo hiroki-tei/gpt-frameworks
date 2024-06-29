@@ -2,5 +2,8 @@
   "name": "front",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@chainlit/react-client": "^0.1.2"
+  }
 }
