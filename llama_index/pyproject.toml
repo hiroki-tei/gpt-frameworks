@@ -8,5 +8,5 @@ package-mode = false
 [tool.poetry.dependencies]
 common-lib = { path = "../common-lib", develop=true }
 python = "^3.12"
-llama-index = "^0.10.36"
+llama-index = "^0.10.59"
 llama-index-readers-notion = "^0.1.6"
