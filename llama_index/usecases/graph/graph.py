@@ -1,7 +1,19 @@
+from llama_index.core import Settings
+from llama_index.core.callbacks import CallbackManager
+from langfuse.llama_index import LlamaIndexCallbackHandler
+from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
+
+langfuse_callback_manager = LlamaIndexCallbackHandler()
+Settings.callback_manager = CallbackManager([langfuse_callback_manager])
 
 # loading data
-from llama_index.core import SimpleDirectoryReader
-documents = SimpleDirectoryReader("data/interest/mbti").load_data()
+#from llama_index.core import SimpleDirectoryReader
+#documents = SimpleDirectoryReader("data/interest/mbti").load_data()
+
+from llama_index.readers.web import SimpleWebPageReader
+documents = SimpleWebPageReader(html_to_text=True).load_data(
+    ["https://iemone.jp/article/lifestyle/chian_431810/"]
+)
 
 from llama_index.llms.openai import OpenAI
 from llama_index.core import PropertyGraphIndex
@@ -11,12 +23,10 @@ from typing import Literal
 
 llm = OpenAI(model="gpt-4o")
 
-entities = Literal["PERSONALITY", "STRENGTH", "WEAKNESS"]
-relations = Literal["HAS", "IS_A"]
+entities = Literal["PERSON"]
+relations = Literal["EX_LOVER", "FINAL_LOVER", "FRIEND"]
 schema = {
-    "PERSONALITY": ["HAS"],
-    "STRENGTH": ["IS_A"],
-    "WEAKNESS": ["IS_A"],
+    "PERSON": ["EX_LOVER", "FINAL_LOVER", "FRIEND"],
 }
 schema_extractor = SchemaLLMPathExtractor(
     llm = llm,
@@ -29,11 +39,20 @@ schema_extractor = SchemaLLMPathExtractor(
     #show_progres=False,
 )
 index = PropertyGraphIndex.from_documents(documents, kg_extractors=[schema_extractor])
-
-query_engine = index.as_query_engine(
-    include_text=True,
+retriever = index.as_retriever(
+    include_text=False,  # include source text, default True
 )
 
-response = query_engine.query("INTPの性格の強みと弱みを教えて")
+nodes = retriever.retrieve("番組「LOVE TRANSIT」に出演したたかあきの元彼女と、たかあきが最終的に告白した人の名前をそれぞれ教えて(EX_LOVER, FINAL_LOVERは１人しかいない)")
+
+for node in nodes:
+    print(node.text)
+
+#index = VectorStoreIndex.from_documents(documents)
+query_engine = index.as_query_engine(
+    include_text=False
+)
+
+response = query_engine.query("番組「LOVE TRANSIT」に出演したたかあきの元彼女と、たかあきが最終的に好きになった人の名前をそれぞれ教えて(EX_LOVER, FINAL_LOVERは各１人しかいない)")
 
 print(str(response))
