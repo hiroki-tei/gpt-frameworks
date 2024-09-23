@@ -39,6 +39,10 @@ schema_extractor = SchemaLLMPathExtractor(
     #show_progres=False,
 )
 index = PropertyGraphIndex.from_documents(documents, kg_extractors=[schema_extractor])
+
+# uncomment here if you want to visualize the graph
+#index.property_graph_store.save_networkx_graph(name="./usecases/graph/kg.html")
+
 retriever = index.as_retriever(
     include_text=False,  # include source text, default True
 )
