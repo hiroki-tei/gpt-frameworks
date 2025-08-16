@@ -1,0 +1,51 @@
+[tool.poetry]
+name = "aws-agentcore-demo"
+version = "0.1.0"
+description = "Comprehensive demonstration of AWS AgentCore features"
+authors = ["Your Name <your.email@example.com>"]
+readme = "README.md"
+packages = [{include = "demos"}, {include = "utils"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+boto3 = "^1.34.0"
+botocore = "^1.34.0"
+requests = "^2.31.0"
+pydantic = "^2.5.0"
+pydantic-settings = "^2.1.0"
+fastapi = "^0.115.0"
+uvicorn = ">=0.24.0"
+python-dotenv = "^1.0.0"
+rich = ">=13.7.0"
+typer = "^0.16.0"
+opentelemetry-api = "^1.21.0"
+opentelemetry-sdk = "^1.21.0"
+opentelemetry-exporter-otlp = "^1.21.0"
+selenium = "^4.15.0"
+beautifulsoup4 = "^4.12.0"
+bedrock-agentcore-starter-toolkit = "^0.1.6"
+bedrock-agentcore = "*"
+strands-agents = "*"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+black = "^23.12.0"
+isort = "^5.13.0"
+flake8 = "^7.0.0"
+mypy = "^1.8.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+agentcore-demo = "main:main"
+
+[tool.black]
+line-length = 88
+target-version = ['py39']
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3

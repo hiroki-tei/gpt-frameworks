@@ -1,0 +1,25 @@
+# Environment variables
+.env
+
+# AgentCore configuration (user-specific)
+.bedrock_agentcore.yaml
+
+# Virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
