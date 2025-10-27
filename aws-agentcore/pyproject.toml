@@ -1,14 +1,71 @@
 [tool.poetry]
-name = "aws-agentcore"
+name = "aws-agentcore-demo"
 version = "0.1.0"
-description = ""
-authors = ["Your Name <you@example.com>"]
-package-mode = false
+description = "Comprehensive demonstration of AWS AgentCore features"
+authors = ["Your Name <your.email@example.com>"]
+readme = "README.md"
+packages = [{include = "demos"}, {include = "web"}, {include = "plugins"}, {include = "config"}]
 
 [tool.poetry.dependencies]
-common-lib = { path = "../common-lib", develop=true }
-python = "^3.11,<3.13"
-bedrock-agentcore-starter-toolkit = "^0.1.0"
+python = "^3.10"
+boto3 = "^1.34.0"
+botocore = "^1.34.0"
+requests = "^2.31.0"
+pydantic = "^2.5.0"
+pydantic-settings = "^2.1.0"
+fastapi = "^0.115.0"
+uvicorn = ">=0.24.0"
+python-dotenv = "^1.0.0"
+rich = ">=13.7.0"
+typer = "^0.16.0"
+opentelemetry-api = "^1.21.0"
+opentelemetry-sdk = "^1.21.0"
+opentelemetry-exporter-otlp = "^1.21.0"
+selenium = "^4.15.0"
+beautifulsoup4 = "^4.12.0"
+bedrock-agentcore-starter-toolkit = "^0.1.6"
+bedrock-agentcore = "*"
+strands-agents = "*"
 langgraph = "^0.5.3"
-langchain = "^0.3.26"
-langchain-anthropic = "^0.3.17"
+# Web interface dependencies
+websockets = "^12.0"
+jinja2 = "^3.1.0"
+python-multipart = "^0.0.6"
+# Data processing and visualization
+pandas = "^2.1.0"
+numpy = "^1.24.0"
+matplotlib = "^3.7.0"
+# Plugin system
+importlib-metadata = "^7.0.0"
+# Additional utilities
+aiofiles = "^23.2.0"
+httpx = "^0.28.1"
+psutil = "^5.9.0"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+pytest-asyncio = "^0.21.0"
+pytest-cov = "^4.1.0"
+pytest-mock = "^3.12.0"
+pytest-xdist = "^3.5.0"
+black = "^23.12.0"
+isort = "^5.13.0"
+flake8 = "^7.0.0"
+mypy = "^1.8.0"
+coverage = "^7.4.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+agentcore-demo = "main:main"
+
+[tool.black]
+line-length = 88
+target-version = ['py39']
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3

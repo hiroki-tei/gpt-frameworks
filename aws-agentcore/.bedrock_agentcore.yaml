@@ -1,0 +1,41 @@
+default_agent: weather_demo
+agents:
+  weather_demo:
+    name: weather_demo
+    entrypoint: ./invoke.py
+    platform: linux/arm64
+    container_runtime: none
+    source_path: .
+    aws:
+      execution_role: arn:aws:iam::029837428702:role/AmazonBedrockAgentCoreSDKRuntime-us-east-1-4ab4111770
+      execution_role_auto_create: true
+      account: 029837428702
+      region: us-east-1
+      ecr_repository: 029837428702.dkr.ecr.us-east-1.amazonaws.com/bedrock-agentcore-weather_demo
+      ecr_auto_create: false
+      network_configuration:
+        network_mode: PUBLIC
+        network_mode_config: null
+      protocol_configuration:
+        server_protocol: HTTP
+      observability:
+        enabled: true
+    bedrock_agentcore:
+      agent_id: weather_demo-4xcwChAIiU
+      agent_arn: arn:aws:bedrock-agentcore:us-east-1:029837428702:runtime/weather_demo-4xcwChAIiU
+      agent_session_id: 64be468e-dd21-4c07-aa47-acd2db014418
+    codebuild:
+      project_name: bedrock-agentcore-weather_demo-builder
+      execution_role: arn:aws:iam::029837428702:role/AmazonBedrockAgentCoreSDKCodeBuild-us-east-1-4ab4111770
+      source_bucket: bedrock-agentcore-codebuild-sources-029837428702-us-east-1
+    memory:
+      mode: STM_AND_LTM
+      memory_id: weather_demo_mem-kn6SK38uCU
+      memory_arn: null
+      memory_name: weather_demo_memory
+      event_expiry_days: 30
+      first_invoke_memory_check_done: true
+      was_created_by_toolkit: false
+    authorizer_configuration: null
+    request_header_configuration: null
+    oauth_configuration: null
