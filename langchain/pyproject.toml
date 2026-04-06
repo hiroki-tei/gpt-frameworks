@@ -8,7 +8,7 @@ authors = ["Your Name <you@example.com>"]
 [tool.poetry.dependencies]
 common-lib = { path = "../common-lib", develop=true }
 python = "^3.11"
-langchain = "^0.0.334"
+langchain = "^0.1.0"
 google-search-results = "^2.4.2"
 googlemaps = "^4.10.0"
 azure-ai-formrecognizer = "^3.2.1"
